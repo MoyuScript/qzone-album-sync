@@ -136,7 +136,7 @@ async function getAlbumItems(albumId, cursor = null, size = 20) {
         const resp = await fetch
             .get(url, {
                 searchParams: {
-                    g_tk: 453001974,
+                    g_tk: 17137887,
                     mode: 0,
                     idcNum: 4,
                     hostUin: uid,
@@ -274,7 +274,10 @@ async function syncAlbums() {
         if (!albumList) break;
 
         for (const album of albumList) {
-            await syncAlbum(album);
+            if (album.name === '2024.8.15.长沙花样汇店') {
+                await syncAlbum(album);
+                return;
+            }
         }
 
         offset += size;
